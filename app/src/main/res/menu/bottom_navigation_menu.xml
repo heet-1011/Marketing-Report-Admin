@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_icon"
+        android:title="Home" />
+    <item
+        android:id="@+id/timeline"
+        android:icon="@drawable/timline_icon"
+        android:title="Timeline" />
+    <item
+        android:id="@+id/route"
+        android:icon="@drawable/route_add"
+        android:title="Routes" />
+    <item
+        android:id="@+id/salesman"
+        android:icon="@drawable/salesman_icon"
+        android:title="Salesman" />
+    <item
+        android:id="@+id/store"
+        android:icon="@drawable/store_icon"
+        android:title="Store" />
+</menu>

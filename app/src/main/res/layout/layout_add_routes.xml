@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayAddRoute"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/overlay_layout_bg"
+    android:backgroundTint="@color/primary"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:theme="@style/Theme.Material3.Light"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginHorizontal="150dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_bg" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Add Route"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Route"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInpLayoutRoute"
+        style="@style/Til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/round_bg"
+        android:elevation="10dp"
+        android:outlineSpotShadowColor="#10000000">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtInpEditTxtRoute"
+            style="@style/Tiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddRoute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Add"
+        android:textSize="18sp"
+        app:backgroundTint="@color/tertiary"
+        app:cornerRadius="8dp" />
+</LinearLayout>

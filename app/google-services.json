@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "709123761609",
+    "project_id": "marketing-report-caf72",
+    "storage_bucket": "marketing-report-caf72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709123761609:android:6971bb0d5c76a11ea8b418",
+        "android_client_info": {
+          "package_name": "com.hp.marketingreport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709123761609-ino5f2subcmqomvrd05j7l4kvnkofo7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hp.marketingreport",
+            "certificate_hash": "698f1637e5b960e9c2fe221badc6cb5fb249932d"
+          }
+        },
+        {
+          "client_id": "709123761609-p89d32k01pdjomdkmocj6s9gqfnm2hk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYkHNglX2VvrTuENdOHJpZid80PA6zB8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709123761609-p89d32k01pdjomdkmocj6s9gqfnm2hk6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

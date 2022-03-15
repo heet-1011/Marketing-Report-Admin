@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondary"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:theme="@style/Theme.Material3.Light"
+    tools:context=".OtpVerificationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/prgIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:indicatorColor="@color/primary"
+            app:trackColor="@color/secondary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/fredoka_one"
+            android:text="OTP Verification"
+            android:textColor="@color/primary"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/otp_screen" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Enter OTP to that sent to your Phone No."
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtViewMobNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:text="+91 xxxxx xxxxx"
+            android:textSize="18sp" />
+
+        <com.chaos.view.PinView
+            android:id="@+id/otpView"
+            style="@style/PinWidget.PinView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_bg"
+            android:cursorVisible="true"
+            android:elevation="10dp"
+            android:inputType="number"
+            android:itemBackground="@color/white"
+            android:outlineSpotShadowColor="#10000000"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cursorWidth="2dp"
+            app:hideLineWhenFilled="true"
+            app:itemCount="6"
+            app:itemHeight="48dp"
+            app:itemRadius="4dp"
+            app:itemSpacing="0dp"
+            app:itemWidth="48dp"
+            app:lineColor="#10000000"
+            app:lineWidth="1dp"
+            app:viewType="rectangle" />
+
+        <LinearLayout
+            android:id="@+id/linLayoutresendOtpTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Didn't recieve OTP? "
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtViewresendotp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Resend"
+                android:textColor="@color/primary"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:gravity="center|bottom"
+            android:paddingTop="40dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerifyOtp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingHorizontal="40dp"
+                android:text="Verify"
+                android:textSize="18sp"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

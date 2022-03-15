@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondary"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:theme="@style/Theme.Material3.Light"
+    tools:context=".FgtPwdFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/fredoka_one"
+            android:text="Forgot Password"
+            android:textColor="@color/primary"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/fgt_pwd" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Enter your registered Mobile No."
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@id/txtInpLayoutMobNo"
+            style="@style/Til"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_bg"
+            android:elevation="10dp"
+            android:outlineSpotShadowColor="#10000000">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtInpEditTxtMobNo"
+                style="@style/Tiet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:gravity="center|bottom"
+            android:paddingTop="40dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerifyOtp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingHorizontal="40dp"
+                android:text="Send"
+                android:textSize="18sp"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

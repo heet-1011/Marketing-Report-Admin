@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation3"
+    app:startDestination="@+id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.hp.marketingreport.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_HomeFragment_to_MarketingPersonAccountCreate"
+            app:destination="@id/MarketingPersonAccountCreate"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_HomeFragment_to_RoutesFragment"
+            app:destination="@id/RoutesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MarketingPersonFragment"
+        android:name="com.hp.marketingreport.MarketingPersonFragment"
+        android:label="Salesman"
+        tools:layout="@layout/fragment_marketing_person">
+        <action
+            android:id="@+id/action_MarketingPersonFragment_to_MarketingPersonAccountCreate"
+            app:destination="@id/MarketingPersonAccountCreate"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_MarketingPersonFragment_to_userDetailsFragment"
+            app:destination="@id/UserDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MarketingPersonAccountCreate"
+        android:name="com.hp.marketingreport.MarketingPersonAccountCreate"
+        android:label="Create User"
+        tools:layout="@layout/fragment_marketing_person_account_create" />
+
+    <fragment
+        android:id="@+id/UpdateProfileFragment"
+        android:name="com.hp.marketingreport.UpdateProfileFragment"
+        android:label="Update Profile"
+        tools:layout="@layout/fragment_update_profile">
+        <action
+            android:id="@+id/action_UpdateProfileFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MyProfileFragment"
+        android:name="com.hp.marketingreport.MyProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_my_profile" />
+
+    <fragment
+        android:id="@+id/RoutesFragment"
+        android:name="com.hp.marketingreport.RoutesFragment"
+        android:label="Routes"
+        tools:layout="@layout/fragment_routes" />
+    <fragment
+        android:id="@+id/UserDetailsFragment"
+        android:name="com.hp.marketingreport.UserDetailsFragment"
+        android:label="Salesman Details"
+        tools:layout="@layout/fragment_user_details" />
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.hp.marketingreport.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/TimelineFragment"
+        android:name="com.hp.marketingreport.TimelineFragment"
+        android:label="Timeline"
+        tools:layout="@layout/fragment_timeline">
+        <action
+            android:id="@+id/action_TimelineFragment_to_TaskDetailsFragment"
+            app:destination="@id/TaskDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/TaskDetailsFragment"
+        android:name="com.hp.marketingreport.TaskDetailsFragment"
+        android:label="Task Detail"
+        tools:layout="@layout/fragment_task_details" />
+    <fragment
+        android:id="@+id/MapsFragment"
+        android:name="com.hp.marketingreport.MapsFragment"
+        android:label="Locations"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/StoreFragment"
+        android:name="com.hp.marketingreport.StoreFragment"
+        android:label="Stores"
+        tools:layout="@layout/fragment_store" />
+</navigation>

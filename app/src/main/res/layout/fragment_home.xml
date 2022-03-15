@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SwipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondary"
+    android:orientation="vertical"
+    android:theme="@style/Theme.Material3.Light"
+    tools:context=".HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:columnCount="2"
+                android:rowCount="2">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/round_bg"
+                    android:elevation="10dp"
+                    android:orientation="vertical"
+                    android:outlineSpotShadowColor="#50000000"
+                    android:paddingVertical="7dp"
+                    android:paddingStart="10dp">
+
+                    <View
+                        android:id="@+id/divider1"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:background="#30000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/divider1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.5"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Today's Visits"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txtViewTodaysVisits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:maxWidth="100dp"
+                            android:minWidth="100dp"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="50sp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/round_bg"
+                    android:elevation="10dp"
+                    android:orientation="vertical"
+                    android:outlineSpotShadowColor="#50000000"
+                    android:paddingVertical="7dp"
+                    android:paddingStart="10dp">
+
+                    <View
+                        android:id="@+id/divider2"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:background="#30000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/divider2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.5"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Total Visits"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txtViewTotalVisits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:maxWidth="100dp"
+                            android:minWidth="100dp"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="50sp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/round_bg"
+                    android:elevation="10dp"
+                    android:orientation="vertical"
+                    android:outlineSpotShadowColor="#50000000"
+                    android:paddingVertical="7dp"
+                    android:paddingStart="10dp">
+
+                    <View
+                        android:id="@+id/divider3"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:background="#30000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/divider3"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.5"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Salesmen"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txtViewSalesmen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:maxWidth="100dp"
+                            android:minWidth="100dp"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="50sp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/round_bg"
+                    android:elevation="10dp"
+                    android:orientation="vertical"
+                    android:outlineSpotShadowColor="#50000000"
+                    android:paddingVertical="7dp"
+                    android:paddingStart="10dp">
+
+                    <View
+                        android:id="@+id/divider4"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:background="#30000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/divider4"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.5"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Routes"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txtViewRoutes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:maxWidth="100dp"
+                            android:minWidth="100dp"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="50sp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_bg"
+                android:elevation="10dp"
+                android:orientation="vertical"
+                android:outlineSpotShadowColor="#50000000">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtInpLayoutYear"
+                    style="@style/Til"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="20dp"
+                    app:startIconDrawable="@drawable/edit_icon">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInpEditTxtYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:maxWidth="75dp"
+                        android:minWidth="75dp"
+                        android:padding="0dp"
+                        android:text="Year"
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:minHeight="300dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
