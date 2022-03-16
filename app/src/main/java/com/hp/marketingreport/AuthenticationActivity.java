@@ -26,26 +26,29 @@ public class AuthenticationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
         try {
+            final NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_authentication);
+            navController = navHostFragment.getNavController();
             way = getIntent().getStringExtra("way");
             if (way.equals("settings")) {
                 Navigation.findNavController(this, R.id.nav_host_fragment_content_authentication).navigate(R.id.FgtPwdFragment);
             } else if (way.equals("signUp")) {
                 Navigation.findNavController(this, R.id.nav_host_fragment_content_authentication).navigate(R.id.SignUpFragment);
             }
+            navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+                @Override
+                public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+                    switch (navDestination.getId()) {
+                        default:
+                            chkInternetSpeed();
+                    }
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
             final NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_authentication);
             navController = navHostFragment.getNavController();
         }
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                switch (navDestination.getId()) {
-                    default:
-                        chkInternetSpeed();
-                }
-            }
-        });
+
         btnTryAgain = findViewById(R.id.btnTryAgain);
         btnTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override

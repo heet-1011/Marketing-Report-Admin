@@ -52,5 +52,4 @@ public class viewModel extends ViewModel {
     public LiveData<HashMap<String, Float>> getMonthlyDataCount() {
         return monthlyDataCount;
     }
-
 }

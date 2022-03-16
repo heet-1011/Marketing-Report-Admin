@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/MarketingReport/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.168" />
+        <entry key="..\:/MarketingReport/app/src/main/res/drawable-v24/notification_active_icon.xml" value="0.154" />
         <entry key="..\:/MarketingReport/app/src/main/res/drawable/addIcon.xml" value="0.1555" />
         <entry key="..\:/MarketingReport/app/src/main/res/drawable/add_document_bg.xml" value="0.1555" />
         <entry key="..\:/MarketingReport/app/src/main/res/drawable/arrow_right.xml" value="0.151" />
@@ -74,6 +75,7 @@
         <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_marketing_person.xml" value="0.176" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_marketing_person_account_create.xml" value="0.176" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_my_profile.xml" value="0.152" />
+        <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_notification.xml" value="0.1633176571184267" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_otp_verification.xml" value="0.1716612377850163" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_route_create.xml" value="0.21929824561403508" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_routes.xml" value="0.10400000000000001" />
@@ -90,6 +92,7 @@
         <entry key="..\:/MarketingReport/app/src/main/res/layout/fragment_user_details.xml" value="0.1716612377850163" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/layout_add_route.xml" value="0.1713815789473684" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/layout_add_routes.xml" value="0.17335526315789473" />
+        <entry key="..\:/MarketingReport/app/src/main/res/layout/layout_notification_item.xml" value="0.1633176571184267" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/layout_route.xml" value="0.1713815789473684" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/layout_routes.xml" value="0.17335526315789473" />
         <entry key="..\:/MarketingReport/app/src/main/res/layout/layout_sort.xml" value="0.17335526315789473" />

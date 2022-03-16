@@ -100,4 +100,8 @@
         android:name="com.hp.marketingreport.StoreFragment"
         android:label="Stores"
         tools:layout="@layout/fragment_store" />
+    <fragment
+        android:id="@+id/NotificationFragment"
+        android:name="com.hp.marketingreport.NotificationFragment"
+        android:label="NotificationFragment" />
 </navigation>

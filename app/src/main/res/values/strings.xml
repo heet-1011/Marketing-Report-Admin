@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Marketing Report</string>
     <string name="reset"><u>Reset</u></string>
+    <string name="clearall"><u>Clear All</u></string>
     <string-array name="timelineSort">
         <item>Date</item>
         <item>Store Name</item>

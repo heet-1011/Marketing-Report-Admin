@@ -67,6 +67,7 @@ public class SettingsFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("profile", MODE_PRIVATE);
                 sharedPreferences.edit().clear().apply();
+                requireActivity().getSharedPreferences("msgRecieved",MODE_PRIVATE).edit().clear().apply();
                 Intent intent = new Intent(getActivity(), AuthenticationActivity.class);
                 intent.putExtra("way", "signUp");
                 startActivity(intent);

@@ -155,8 +155,12 @@ public class OtpVerificationFragment extends Fragment {
 
     private void verifyUserOtp(String userOtp) {
         if (source.equals("SignUp") || source.equals("SignIn")) {
-            PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(verificationID, userOtp);
-            signInWithPhoneAuthCredentials(phoneAuthCredential);
+            try{
+                PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(verificationID, userOtp);
+                signInWithPhoneAuthCredentials(phoneAuthCredential);
+            }catch (Exception e){
+                Toast.makeText(getContext(),"Something went wrong! Please try again later.",Toast.LENGTH_SHORT).show();
+            }
         } else if (source.equals("fgtPwd")) {
             Bundle dataBundle = new Bundle();
             dataBundle.putString("mobNo", mobNo);
@@ -182,9 +186,15 @@ public class OtpVerificationFragment extends Fragment {
                         progressDialog.show();
                         uploadUserData();
                     } else if (source.equals("SignIn")) {
-                        Intent intent = new Intent(getActivity(), HomeActivity.class);
-                        getActivity().startActivity(intent);
-                        getActivity().finish();
+                        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+                            @Override
+                            public void onSuccess(String s) {
+                                firestoreAdminCollectionRef.document(mobNo).update("fcmToken",s);
+                                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                getActivity().startActivity(intent);
+                                getActivity().finish();
+                            }
+                        });
                     }
                     prgIndicator.setIndeterminate(false);
                 } else {
@@ -195,38 +205,44 @@ public class OtpVerificationFragment extends Fragment {
     }
 
     private void uploadUserData() {
-        DocumentReference documentReference = firestoreAdminCollectionRef.document(mobNo);
-        Map<String, Object> userDataMap = new HashMap<>();
-        userDataMap.put("name", name.toUpperCase(Locale.ROOT));
-        userDataMap.put("mobileNo", mobNo);
-        userDataMap.put("emailId", email);
-        userDataMap.put("pwd", pwd);
-        userDataMap.put("status", 0);
-        userDataMap.put("verificationDoc", "");
-        userDataMap.put("dob", null);
-        documentReference.set(userDataMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
             @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(getContext(), "Success", Toast.LENGTH_LONG).show();
-                FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+            public void onSuccess(String s) {
+                DocumentReference documentReference = firestoreAdminCollectionRef.document(mobNo);
+                Map<String, Object> userDataMap = new HashMap<>();
+                userDataMap.put("name", name.toUpperCase(Locale.ROOT));
+                userDataMap.put("mobileNo", mobNo);
+                userDataMap.put("emailId", email);
+                userDataMap.put("pwd", pwd);
+                userDataMap.put("status", 0);
+                userDataMap.put("verificationDoc", "");
+                userDataMap.put("dob", null);
+                userDataMap.put("fcmToken",s);
+                documentReference.set(userDataMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(String s) {
-                        documentReference.update("fcmToken", s);
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getContext(), "Success", Toast.LENGTH_LONG).show();
+                        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+                            @Override
+                            public void onSuccess(String s) {
+                                documentReference.update("fcmToken", s);
+                            }
+                        });
+                        progressDialog.dismiss();
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
+                        getActivity().startActivity(intent);
+                        getActivity().finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "Failed", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
+                        getActivity().startActivity(intent);
+                        getActivity().finish();
                     }
                 });
-                progressDialog.dismiss();
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                getActivity().startActivity(intent);
-                getActivity().finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(), "Failed", Toast.LENGTH_LONG).show();
-                progressDialog.dismiss();
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                getActivity().startActivity(intent);
-                getActivity().finish();
             }
         });
 

@@ -16,4 +16,12 @@
             android:title="Edit"
             app:showAsAction="ifRoom|collapseActionView" />
     </group>
+    <group>
+    <item
+        android:id="@+id/action_notification"
+        android:icon="@drawable/notification_icon"
+        android:title="Notification"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:menuCategory="container" />
+    </group>
 </menu>

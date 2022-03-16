@@ -1,5 +1,6 @@
 package com.hp.marketingreport;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -51,14 +53,14 @@ public class HomeActivity extends AppCompatActivity {
     public String date = "", currdate;
     int mYear;
     private TextView txtViewUserName;
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences,sharedPreferences2;
     NavController navController;
     SearchView searchView;
     public int totalVisits = 0, todayVisits = 0, totalSalesman = 0, totalRoutes = 0;
     public float Jan = 0, Feb = 0, Mar = 0, Apr = 0, May = 0, Jun = 0, Jul = 0, Aug = 0, Sep = 0, Oct = 0, Nov = 0, Dec = 0;
     viewModel viewModel;
     NavHostFragment navHostFragment;
-    MenuItem menuItem, menuItem1;
+    MenuItem menuItem, menuItem1,menuItem2;
     MaterialButton btnTryAgain;
 
     @Override
@@ -175,6 +177,7 @@ public class HomeActivity extends AppCompatActivity {
                 chkInternetSpeed();
             }
         });
+
     }
 
     private void findProfileData() {
@@ -189,6 +192,9 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
+
+
+
 
     private void getProfileData(DocumentSnapshot documentSnapshot) {
         name = documentSnapshot.getString("name");
@@ -229,22 +235,56 @@ public class HomeActivity extends AppCompatActivity {
         imageView1.setImageDrawable(getDrawable(R.drawable.close));
         imageView1.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
         menuItem1 = menu.findItem(R.id.action_edit);
+        menuItem2 = menu.findItem(R.id.action_notification);
+        sharedPreferences2 = getSharedPreferences("msgRecieved", Context.MODE_PRIVATE);
+        sharedPreferences2.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                if(sharedPreferences.getAll().isEmpty()){
+                    menuItem2.setIcon(R.drawable.notification_icon);
+                }else{
+                    menuItem2.setIcon(R.drawable.notification_active_icon);
+                }
+            }
+        });
+        Map<String, ?> notifications = new HashMap<>();
+        notifications =  sharedPreferences2.getAll();
+        if(notifications.isEmpty()){
+            menuItem2.setIcon(R.drawable.notification_icon);
+        }else{
+            menuItem2.setIcon(R.drawable.notification_active_icon);
+        }
+        menuItem2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Navigation.findNavController(HomeActivity.this, R.id.nav_host_fragment_content_home).navigate(R.id.NotificationFragment);
+                return true;
+            }
+        });
         navController.addOnDestinationChangedListener((navController, navDestination, bundle) -> {
             switch (navDestination.getId()) {
+                case R.id.HomeFragment:
+                    menuItem.setVisible(false);
+                    menuItem1.setVisible(false);
+                    menuItem2.setVisible(true);
+                    break;
                 case R.id.TimelineFragment:
                 case R.id.MarketingPersonFragment:
                 case R.id.RoutesFragment:
                 case R.id.StoreFragment:
                     menuItem.setVisible(true);
                     menuItem1.setVisible(false);
+                    menuItem2.setVisible(false);
                     break;
                 case R.id.UserDetailsFragment:
                     menuItem.setVisible(false);
                     menuItem1.setVisible(true);
+                    menuItem2.setVisible(false);
                     break;
                 default:
                     menuItem.setVisible(false);
                     menuItem1.setVisible(false);
+                    menuItem2.setVisible(false);
             }
         });
         return true;

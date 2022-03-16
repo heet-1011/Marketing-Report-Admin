@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +32,8 @@ public class SplashFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_splash, container, false);
+        final NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_authentication);
+        NavController navController = navHostFragment.getNavController();
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -42,7 +46,7 @@ public class SplashFragment extends Fragment {
                                 requireActivity().startActivity(intent);
                                 requireActivity().finish();
                             } else {
-                                Navigation.findNavController(root).navigate(R.id.action_splashFragment_to_signUpFragment);
+                                navController.navigate(R.id.SignUpFragment);
                             }
                         }
                     });
