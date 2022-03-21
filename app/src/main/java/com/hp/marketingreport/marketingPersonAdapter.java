@@ -51,6 +51,7 @@ public class marketingPersonAdapter extends RecyclerView.Adapter<marketingPerson
             dataBundle.putString("dob", date);
             dataBundle.putString("routeAssign", marketingPersonModelList.get(position).getRouteAssign());
             dataBundle.putString("verificationDoc", marketingPersonModelList.get(position).getVerificationDoc());
+            dataBundle.putString("pwd",marketingPersonModelList.get(position).getPwd());
             Navigation.findNavController(view).navigate(R.id.action_MarketingPersonFragment_to_userDetailsFragment, dataBundle);
         });
     }

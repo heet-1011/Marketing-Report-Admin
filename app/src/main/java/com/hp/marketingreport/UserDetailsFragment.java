@@ -42,13 +42,13 @@ import java.util.Locale;
 
 public class UserDetailsFragment extends Fragment {
 
-    TextInputEditText txtInpEditTxtName, txtInpEditTxtEmail, txtInpEditTxtMobNo, txtInpEditTxtDob;
+    TextInputEditText txtInpEditTxtName, txtInpEditTxtEmail, txtInpEditTxtMobNo, txtInpEditTxtDob,txtInpEditTxtPwd;
     AutoCompleteTextView autoComTxtViewRoutes;
     MaterialButton btnVerificationDoc, btnViewTimeline, btnUpdate;
-    String name, email, mobNo, dob, routeAssign, verificationDoc, mode = "see", newName, newEmail, newMobNo, fcmToken;
+    String name, email, mobNo, dob, routeAssign, verificationDoc,pwd, mode = "see", newName, newEmail, newMobNo, fcmToken,newPwd;
     LinearLayout linLayoutButton;
     MenuItem menuItemMain;
-    TextInputLayout txtInpLayoutName, txtInpLayoutEmail, txtInpLayoutMobNo, txtInpLayoutDob, txtInpLayoutRouteAssign;
+    TextInputLayout txtInpLayoutName, txtInpLayoutEmail, txtInpLayoutMobNo, txtInpLayoutDob, txtInpLayoutRouteAssign,txtInpLayoutPwd;
     Timestamp timestamp;
     ArrayList<String> routesList;
 
@@ -79,6 +79,7 @@ public class UserDetailsFragment extends Fragment {
                     btnUpdate.setVisibility(View.VISIBLE);
                     componentAccessChange(txtInpEditTxtName, true);
                     componentAccessChange(txtInpEditTxtEmail, true);
+                    componentAccessChange(txtInpEditTxtPwd,true);
                     autoComTxtViewRoutes.setClickable(true);
                     autoComTxtViewRoutes.setCursorVisible(true);
                     autoComTxtViewRoutes.setFocusable(true);
@@ -115,6 +116,7 @@ public class UserDetailsFragment extends Fragment {
                     btnUpdate.setVisibility(View.GONE);
                     componentAccessChange(txtInpEditTxtName, false);
                     componentAccessChange(txtInpEditTxtEmail, false);
+                    componentAccessChange(txtInpEditTxtPwd,false);
                     txtInpEditTxtDob.setOnClickListener(null);
                     autoComTxtViewRoutes.setClickable(false);
                     autoComTxtViewRoutes.setCursorVisible(false);
@@ -167,6 +169,23 @@ public class UserDetailsFragment extends Fragment {
 
             }
         });
+        txtInpEditTxtPwd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                txtInpLayoutPwd.setErrorEnabled(false);
+                txtInpLayoutPwd.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         txtInpEditTxtDob.addTextChangedListener(new TextWatcher() {
             @Override
@@ -190,6 +209,7 @@ public class UserDetailsFragment extends Fragment {
         email = getArguments().getString("email");
         mobNo = getArguments().getString("mobNo");
         dob = getArguments().getString("dob");
+        pwd = getArguments().getString("pwd");
         routeAssign = getArguments().getString("routeAssign");
         verificationDoc = getArguments().getString("verificationDoc");
         txtInpEditTxtName.setText(name);
@@ -197,6 +217,7 @@ public class UserDetailsFragment extends Fragment {
         txtInpEditTxtEmail.setText(email);
         txtInpEditTxtDob.setText(dob);
         autoComTxtViewRoutes.setText(routeAssign);
+        txtInpEditTxtPwd.setText(pwd);
         btnVerificationDoc.setOnClickListener(view1 -> {
             if (verificationDoc.isEmpty()) {
                 Toast.makeText(getContext(), "Verification ID not available", Toast.LENGTH_LONG).show();
@@ -240,16 +261,20 @@ public class UserDetailsFragment extends Fragment {
                 componentAccessChange(txtInpEditTxtName, false);
                 componentAccessChange(txtInpEditTxtEmail, false);
                 componentAccessChange(txtInpEditTxtMobNo, false);
+                componentAccessChange(txtInpEditTxtPwd,false);
                 txtInpEditTxtDob.setOnClickListener(null);
                 autoComTxtViewRoutes.setClickable(false);
                 autoComTxtViewRoutes.setCursorVisible(false);
                 autoComTxtViewRoutes.setFocusable(false);
                 autoComTxtViewRoutes.setFocusableInTouchMode(false);
                 txtInpLayoutRouteAssign.setEndIconMode(TextInputLayout.END_ICON_NONE);
-                if (nameValid() && emailValid()) {
+                if (nameValid() && emailValid() && pwdValid()) {
                     DocumentReference documentReference = FirebaseFirestore.getInstance().collection("marketingPerson").document(mobNo);
                     documentReference.update("name", newName);
                     documentReference.update("emailId", newEmail);
+                    if(!newPwd.equals(pwd)){
+                        documentReference.update("pwd",newPwd);
+                    }
                     if (timestamp != null) {
                         documentReference.update("dob", timestamp);
                     }
@@ -287,6 +312,8 @@ public class UserDetailsFragment extends Fragment {
         txtInpLayoutMobNo = root.findViewById(R.id.txtInpLayoutMobNo);
         txtInpLayoutDob = root.findViewById(R.id.txtInpLayoutDob);
         txtInpLayoutRouteAssign = root.findViewById(R.id.txtInpLayoutRouteAssign);
+        txtInpEditTxtPwd = root.findViewById(R.id.txtInpEditTxtPwd);
+        txtInpLayoutPwd = root.findViewById(R.id.txtInpLayoutPwd);
     }
 
     @Override
@@ -299,6 +326,7 @@ public class UserDetailsFragment extends Fragment {
         btnUpdate.setVisibility(View.GONE);
         componentAccessChange(txtInpEditTxtName, false);
         componentAccessChange(txtInpEditTxtEmail, false);
+        componentAccessChange(txtInpEditTxtPwd,false);
         autoComTxtViewRoutes.setClickable(false);
         autoComTxtViewRoutes.setCursorVisible(false);
         autoComTxtViewRoutes.setFocusable(false);
@@ -321,6 +349,16 @@ public class UserDetailsFragment extends Fragment {
             return true;
         } else {
             txtInpLayoutName.setError("Name field can't be empty.");
+            return false;
+        }
+    }
+
+    private boolean pwdValid() {
+        if (!txtInpEditTxtPwd.getText().toString().isEmpty()) {
+            newPwd = txtInpEditTxtPwd.getText().toString().trim();
+            return true;
+        } else {
+            txtInpLayoutPwd.setError("Pwd field can't be empty.");
             return false;
         }
     }

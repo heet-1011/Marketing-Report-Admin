@@ -3,20 +3,21 @@ package com.hp.marketingreport;
 import com.google.firebase.Timestamp;
 
 public class marketingPersonModel {
-    String name, emailId, mobileNo, verificationDoc, routeAssign;
+    String name, emailId, mobileNo, verificationDoc, routeAssign,pwd;
     Timestamp dob;
 
     public marketingPersonModel() {
 
     }
 
-    public marketingPersonModel(String name, String emailId, String mobileNo, String verificationDoc, String routeAssign, Timestamp dob) {
+    public marketingPersonModel(String name, String emailId, String mobileNo, String verificationDoc, String routeAssign,String pwd, Timestamp dob) {
         this.name = name;
         this.emailId = emailId;
         this.mobileNo = mobileNo;
         this.verificationDoc = verificationDoc;
         this.routeAssign = routeAssign;
         this.dob = dob;
+        this.pwd = pwd;
     }
 
     public String getName() {
@@ -65,5 +66,13 @@ public class marketingPersonModel {
 
     public void setRouteAssign(String routeAssign) {
         this.routeAssign = routeAssign;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 }

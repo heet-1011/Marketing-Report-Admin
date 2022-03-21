@@ -25,6 +25,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -111,10 +112,12 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void loadData() {
-        txtInpEditTxtName.setText(((HomeActivity) getActivity()).name.toUpperCase(Locale.ROOT));
-        txtInpEditTxtMobNo.setText(((HomeActivity) getActivity()).mobNo);
-        txtInpEditTxtEmail.setText(((HomeActivity) getActivity()).email);
-        txtInpEditTxtDob.setText(((HomeActivity) getActivity()).dob);
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("profile", MODE_PRIVATE);
+        txtInpEditTxtName.setText(sharedPreferences.getString("name",""));
+        mobNo = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+        txtInpEditTxtMobNo.setText(mobNo);
+        txtInpEditTxtEmail.setText(sharedPreferences.getString("email",""));
+        txtInpEditTxtDob.setText(sharedPreferences.getString("dob",""));
     }
 
     private void initViews(View root) {
